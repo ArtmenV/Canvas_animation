@@ -1,0 +1,234 @@
+$font: "Libre Franklin", sans-serif;
+$logo_font: "VT323", monospace;
+
+$pink: #fb5b87;
+$green: #00a578;
+$light-green: rgba(0, 165, 120, 0.47);
+
+body {
+  font-family: $font;
+  cursor: crosshair;
+}
+.wrap {
+  position: relative;
+  margin: 0 auto;
+  transform: translateY(30%);
+  max-width: 800px;
+  box-shadow: 7px 13px 49px -5px $light-green;
+  overflow: hidden;
+}
+.registration {
+  animation: open 0.3s infinite;
+  animation-iteration-count: 1;
+  background: radial-gradient(circle farthest-corner, black 40%, #ffffff00 0)
+      no-repeat,
+    white;
+  background-position: -280px -160px;
+  button {
+    background: #000;
+  }
+}
+
+.signin {
+  animation: open 0.3s infinite;
+  animation-iteration-count: 1;
+  background: black;
+  color: white;
+  background: radial-gradient(circle farthest-corner, $green 40%, black 0)
+      no-repeat,
+    black;
+  background-position: -280px -160px;
+  h1 {
+    color: white;
+  }
+}
+.left {
+  background: radial-gradient(circle farthest-corner, $green 40%, #ffffff00 0)
+    no-repeat;
+  background-position: 140px 160px;
+}
+.logo-text {
+  font-family: $logo_font;
+  font-size: 130px;
+  color: $green;
+  mix-blend-mode: difference;
+  margin: 90px 0 0 90px;
+  line-height: 82%;
+}
+.card__side {
+  width: 50%;
+  min-height: 450px;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  display: flex;
+}
+
+img {
+  width: 20%;
+  margin-bottom: 15px;
+}
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+input:focus {
+  outline-color: black;
+}
+.password {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  input {
+    padding-right: 25px;
+  }
+  .password-icon {
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    right: 1%;
+    top: 12%;
+    transition: all 0.1s linear;
+    margin-left: 5px;
+  }
+}
+
+button {
+  background: $green;
+  color: white;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: alias;
+  box-shadow: 0 3px 0 1px $light-green;
+}
+button:hover {
+  box-shadow: none;
+  transform: translateY(3px);
+  transition: all 0.1s linear;
+}
+button:focus {
+  outline-color: $pink;
+}
+a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: $pink;
+  padding-left: 5px;
+}
+h2 {
+  font-size: 34px;
+}
+
+//Thanks for glitch : https://codepen.io/hi-im-si/pen/oXyqjG
+.glitch {
+  position: relative;
+  transform: scale3d(1, 1, 1);
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    background: white;
+    color: black;
+    clip: rect(0, 900px, 0, 0);
+  }
+  &::before {
+    left: 7px;
+    text-shadow: 1.5px 0 $green;
+    animation: glitch-effect 3s infinite linear alternate-reverse;
+  }
+  &::after {
+    left: 3px;
+    text-shadow: -1.5px 0 $pink;
+    animation: glitch-effect 2s infinite linear alternate-reverse;
+  }
+}
+
+.black {
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    background: black;
+    color: white;
+    clip: rect(0, 900px, 0, 0);
+  }
+}
+
+@keyframes glitch-effect {
+  @for $i from 0 through 20 {
+    #{percentage($i*(1/20))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+    }
+  }
+}
+//Thanks for glitch : https://codepen.io/hi-im-si/pen/oXyqjG
+
+.fa-instagram {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  font-size: 38px;
+  color: $green;
+}
+
+.fa-instagram:hover {
+  font-size: 42px;
+  color: $pink;
+  transition: all 0.1s linear;
+  cursor: pointer;
+}
+
+@keyframes open {
+  0% {
+    background: black;
+  }
+  100% {
+  }
+}
+@keyframes open-signin {
+  0% {
+    background: none;
+  }
+  100% {
+  }
+}
+@media screen and (max-width: 900px) {
+  .wrap {
+    width: fit-content;
+    margin-bottom: 140px;
+  }
+  .card__side {
+    width: 100%;
+    min-height: 0;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo-text {
+    margin: 10px 0 0 90px;
+  }
+  p {
+    margin: 25px 0px 42px 0;
+  }
+}
